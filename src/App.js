@@ -37,10 +37,6 @@ const App = _ => {
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
       <Route path='/confirm' component={Confirm} />
-      <Route
-        path='/dashboard'
-        component={Dashboard}
-      />
       <PrivateRoute
         path='/dashboard'
         component={Dashboard}
