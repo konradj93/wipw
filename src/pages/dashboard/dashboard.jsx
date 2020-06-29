@@ -1,12 +1,12 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import AWS from 'aws-sdk/global';
-import {authCfg, defaultRegion, myBucket, apiUrl} from '../../env'
+import { authCfg, defaultRegion, myBucket, apiUrl } from '../../env'
 
 
 import './dashboard.scss';
 
 import S3 from "aws-sdk/clients/s3";
-import {AuthorizationService} from "../../lib/security/authorization.service";
+import { AuthorizationService } from "../../lib/security/authorization.service";
 
 AWS.config.region = defaultRegion;
 const auth = new AuthorizationService(authCfg, AWS.config);
@@ -34,7 +34,7 @@ const uploadToS3 = (file) => {
 
 const getSignedURL = (key) => {
 	const s3 = new S3();
-	const params = {Bucket: myBucket, Key: key};
+	const params = { Bucket: myBucket, Key: key };
 	return s3.getSignedUrl('getObject', params);
 }
 
@@ -48,12 +48,12 @@ const orderAnimation = (photos) => {
 					'Content-Type': 'application/json',
 					'Authorization': token
 				},
-				body: JSON.stringify({"photos": photos, "meta1": "meta_value"})
+				body: JSON.stringify({ "photos": photos, "meta1": "meta_value" })
 			})
 		})
 }
 
-const Confirm = _ =>{
+const Confirm = _ => {
 	const [wentWrong, setWentWrong] = useState(null);
 	const [fileName, setFileName] = useState('Choose File');
 	const [files, setFiles] = useState(null);
@@ -81,7 +81,7 @@ const Confirm = _ =>{
 			uploadToS3(file)
 				.then(res => getSignedURL(res))
 				.catch(err => console.log(err))
-				.finally(() => {fileRef.value = ""; setFileName("Choose File")})
+				.finally(() => { fileRef.value = ""; setFileName("Choose File") })
 		})
 	}
 
@@ -108,19 +108,17 @@ const Confirm = _ =>{
 					<div className="loginFormWrapper">
 						<div className="file-wrapper">
 							<button className="btn btn-primary" onClick={showFiles}> Show files from bucket</button>
-							{files && <ul>
-								files.map(el => <li>el</li>
-							</ul>}
+							{files && <ul>{files.Contents.map(el => <li>{el.Key}</li>)}</ul>}
 						</div>
 						<div className="input-group mb-3">
 							<div className="input-group-prepend" onClick={uploadFile}>
 								<span className="input-group-text">Upload</span>
 							</div>
 							<div className="custom-file">
-								<input type="file" className="custom-file-input" id="inputGroupFile01" onChange={showFileName} ref={fileRef}/>
-									<label className="custom-file-label" htmlFor="inputGroupFile01">
-										{fileName}
-									</label>
+								<input type="file" className="custom-file-input" id="inputGroupFile01" onChange={showFileName} ref={fileRef} />
+								<label className="custom-file-label" htmlFor="inputGroupFile01">
+									{fileName}
+								</label>
 							</div>
 						</div>
 
