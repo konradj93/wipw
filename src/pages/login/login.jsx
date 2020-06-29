@@ -41,6 +41,13 @@ const Login = _ =>{
 			.catch(err => console.log('access deny' + err.message))
 	});
 
+	const onKeyPress = (e) => {
+		if(e.which === 13) {
+		  submitLogin();
+		}
+		else return e;
+	  }
+
 	return <div className="loginPage">
 		<div className="container h-100">
 			<div className="row h-100 align-items-center justify-content-center">
@@ -58,7 +65,7 @@ const Login = _ =>{
 							<div className="form-group">
 								<label form={'loginPassword'}>Password</label>
 								<input name="password" type='password' ref={register} id={'loginPassword'}
-											 className="form-control"  data-testid = "password"/>
+											 className="form-control" onKeyPress={onKeyPress} data-testid = "password"/>
 								{ errors.password &&
 								<ErrorComponent
 																message={ String(errors.password.message) }/> }
