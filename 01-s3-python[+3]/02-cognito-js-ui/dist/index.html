@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>My Animation creator</h1>
+        <h2 class="greet"></h2>
+        
+        <div class="container">
+            <div class="jumbotron">
+                <h2>Register</h2>
+                <div class="form-group">
+                    <label for="registerUsernameInput">Email address</label>
+                    <input type="email" class="form-control registerUsernameInput" id="registerUsernameInput" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="registerPasswordInput">Password</label>
+                    <input type="password" class="form-control registerPasswordInput" id="registerPasswordInput">
+                </div>
+                <div class="form-group">
+                    <label for="registerFullnameInput">Full name</label>
+                    <input type="text" class="form-control registerFullnameInput" id="registerFullnameInput">
+                </div>
+                <button type="submit" class="btn btn-primary registerUser">Register</button>
+            </div>
+             <div class="jumbotron">
+                <h2>Confirm</h2>
+                <div class="form-group">
+                    <label for="confirmUsernameInput">Email address</label>
+                    <input type="email" class="form-control confirmUsernameInput" id="confirmUsernameInput" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="confirmCodeInput">Code</label>
+                    <input type="password" class="form-control confirmCodeInput" id="confirmCodeInput">
+                </div>
+                <button type="submit" class="btn btn-primary confirmUser">Activate</button>
+            </div>
+             <div class="jumbotron">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="loginUsernameInput">Email address</label>
+                    <input type="email" class="form-control loginUsernameInput" id="loginUsernameInput" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="loginPasswordInput">Password</label>
+                    <input type="password" class="form-control loginPasswordInput" id="loginPasswordInput">
+                </div>
+                <button type="submit" class="btn btn-primary loginUser">Sign-in</button>
+            </div>
+        </div>
+        
+        <br/><br/><br/>
+        <nav>
+            <ul>
+                
+                <li>
+                    <button class="orderAnimation">order animation</button>
+                </li>
+                
+                <li>read user data</li>
+                
+                <li>
+                    <button class="listItems">
+                        list all files in my bucket, (read own dir, write to own dir)    
+                    </button>
+                </li>
+                <li>
+                    <div class="upload">
+                        <input 
+                            type="file" 
+                            name="my_upload" 
+                            class="upload__input"
+                        />
+                        <button class="upload__confirm">UPLOAD</button>
+                    </div>
+                    <div class="progress">
+                        <div class="progress__container">
+                            <div class="progress__bar">
+                                0%
+                            </div>
+                        </div>
+                    </div>
+                    
+                </li>
+            </ul>
+            <ul class="uploadedFilesList">
+                
+            </ul>
+
+        </nav>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
